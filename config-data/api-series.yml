@@ -1,0 +1,45 @@
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+  servlet:
+    context-path: /series/
+
+spring:
+  application:
+    name: api-series
+
+ rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
+  data:
+    mongodb:
+      database: series-dev-mongo
+      port: 27017
+      host: localhost
+
+  zipkin:
+     base-url: http://zipkin-service:9411/
+info:
+  app:
+    name: api-series
+    description: series
+
+  management:
+    endpoints:
+      web:
+        exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+
+  eureka:
+    instance:
+     hostname: eureka-server
+    client:
+      registerWithEureka: true
+      fetchRegistry: true
+      serviceUrl:
+        defaultZone: http://${eureka.instance.hostname}:8761/eureka/
