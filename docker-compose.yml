@@ -28,9 +28,9 @@ services:
       MONGO_INITDB_ROOT_USERNAME: 'user-series-mongo'
       MONGO_INITDB_ROOT_PASSWORD: 'password-series-mongo'
     ports:
-      - 27017:27017
+      - 27018:27018
     expose:
-      - 27017
+      - 27018
     volumes:
       - ./mongo-init-series.js:/docker-entrypoint-initdb.d/mongo-init-series.js:ro
   mongocontenedor1:
@@ -42,9 +42,9 @@ services:
        MONGO_INITDB_ROOT_USERNAME: 'user-catalogo-mongo'
        MONGO_INITDB_ROOT_PASSWORD: 'password-catalogo-mongo'
       ports:
-          - 27018:27018
+          - 27017:27017
       expose:
-            - 27018
+            - 27017
       volumes:
           - ./mongo-init-series.js:/docker-entrypoint-initdb.d/mongo-init-catalog.js:ro
   zipkin-contenedor:

@@ -1,4 +1,4 @@
-package com.dh.catalog.model;
+package com.dh.catalog.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,16 +16,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Document(collection = "Series")
 public class MovieEntity implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String SeriesId;
+    private String movieId;
 
     private String name;
 
     private String genre;
 
-    private Integer Seasons;
+    private String urlStream;
+
 }
+

@@ -1,28 +1,63 @@
-package com.dh.catalog.controller;
+package com.dh.catalog.repository.controller;
 
-import com.dh.catalog.client.MovieServiceClient;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/catalog")
 public class CatalogController {
 
-	private final MovieServiceClient movieServiceClient;
+	private final CatalogController catalogService;
 
-	public CatalogController(MovieServiceClient movieServiceClient) {
+	public CatalogController(CatalogController catalogService) {
+		this.catalogService = catalogService;
+	}
+
+	@GetMapping("/online/{genre}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<GetGenreResponse>getGenreResponseOnline(@PathVariable String genre) {
+		return ResponseEntity.ok(catalogService.getGenreResponse(genre));
+	}
+
+	@GetMapping("/online/{genre}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<GetGenreResponse>getGenreResponseOffline(@PathVariable String genre) {
+		return ResponseEntity.ok(catalogService.getGenreResponse(genre));
+	}
+
+
+
+
+
+
+
+
+
+
+
+	/*private final MovieServiceClient movieServiceClient;
+	private final SeriesServiceClient seriesServiceClient;*/
+
+	/*public CatalogController(MovieServiceClient movieServiceClient,SeriesServiceClient seriesServiceClient) {
 		this.movieServiceClient = movieServiceClient;
-	}
+		this.seriesServiceClient =seriesServiceClient;}*/
 
-	@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
+	/*@GetMapping("/movies/{genre}")
+	@ResponseStatus(code = HttpStatus.OK)
+	ResponseEntity<List<MovieEntityDto>> getByGenre(@PathVariable String genre) {
 		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
-	}
+	}*/
+
+	/*public CatalogController(SeriesServiceClient seriesServiceClient) {
+		this.seriesServiceClient = seriesServiceClient;}*/
+
+
+	/*@GetMapping("/series/{genre}")
+	ResponseEntity<List<SeriesEntityDto>> getGenre(@PathVariable String genre) {
+		return ResponseEntity.ok(seriesServiceClient.getSeriesByGenre(genre));
+	}*/
+
+
 
 }

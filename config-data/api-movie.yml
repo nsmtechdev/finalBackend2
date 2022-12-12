@@ -6,15 +6,19 @@ spring:
       password: guest
       host: localhost
       port: 5672
+
   application:
     name: api-movie
+
   zipkin:
      base-url: http://zipkin-service:9411/
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/movie-dev
     username: root
     password: Globant123
+
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

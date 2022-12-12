@@ -21,10 +21,8 @@ spring:
 
   zipkin:
      base-url: http://zipkin-service:9411/
-info:
-  app:
-    name: api-series
-    description: series
+
+
 
   management:
     endpoints:
@@ -43,3 +41,7 @@ info:
       fetchRegistry: true
       serviceUrl:
         defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+info:
+  app:
+    name: api-series
+    description: series
