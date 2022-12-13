@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
-public class ChapterEntity implements Serializable {
+public class ChapterEntityDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

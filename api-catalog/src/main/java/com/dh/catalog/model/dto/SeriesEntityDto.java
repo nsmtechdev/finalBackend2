@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-public class SeriesEntity implements Serializable {
+public class SeriesEntityDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -25,5 +25,5 @@ public class SeriesEntity implements Serializable {
 
     private String genre;
 
-    private List<SeasonEntityDto> seasons = new ArrayList<>();
+    private List<SeasonEntityDto> seasonsEntityDto = new ArrayList<>();
 }

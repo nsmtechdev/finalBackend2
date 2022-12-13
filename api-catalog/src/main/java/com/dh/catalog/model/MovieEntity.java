@@ -14,18 +14,19 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Series")
+@Document(collection = "Movies")
 public class MovieEntity implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String SeriesId;
+    private String movieId;
 
     private String name;
 
     private String genre;
 
-    private Integer Seasons;
+    private String urlStream;
+
 }
+

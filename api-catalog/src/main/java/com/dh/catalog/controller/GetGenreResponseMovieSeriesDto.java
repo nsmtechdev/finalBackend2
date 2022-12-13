@@ -1,4 +1,4 @@
-package com.dh.catalog.repository.controller;
+package com.dh.catalog.controller;
 
 import lombok.*;
 
