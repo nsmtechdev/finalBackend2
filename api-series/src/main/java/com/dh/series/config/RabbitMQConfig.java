@@ -1,5 +1,4 @@
-package com.dh.movie.config;
-
+package com.dh.series.config;
 
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -11,16 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String EXCHANGE_NAME = "movieExchange";
-    public static final String TOPIC_NEW_MOVIE = "com.dh.movie.newMovie";
-
+    public static final String EXCHANGE_NAME = "SeriesExchange";
+    public static final String TOPIC_NEW_SERIES = "com.dh.newSeries";
 
     @Bean
     public TopicExchange appExchange() {
         return new TopicExchange(EXCHANGE_NAME);
     }
-
-
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -34,6 +30,3 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter();
     }
 }
-
-
-

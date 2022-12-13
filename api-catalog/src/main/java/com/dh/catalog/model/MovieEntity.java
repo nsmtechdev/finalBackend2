@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Movies")
+@Document(collection = "Movie")
 public class MovieEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

@@ -21,20 +21,21 @@ public class MovieController {
 
     @GetMapping("/{genre}")
     @ResponseStatus(code = HttpStatus.OK)
-    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) {
+    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) throws Exception {
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
+
     @PostMapping("/save")
     @ResponseStatus(code = HttpStatus.CREATED)
     ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         return ResponseEntity.ok().body(movieService.save(movie));
     }
-    //@PostMapping("/save")
-    //@ResponseStatus(code = HttpStatus.CREATED)
-    //public ResponseEntity<Long> create(@RequestBody Movie movie) {
-       // movieService.save(movie);
-        //return ResponseEntity.ok(movie.getName());
 
-    //ResponseEntity<Movie> save(@RequestBody Movie movie) {
-      //  return ResponseEntity.ok().body(movieService.save(movie)); }
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<List<Movie>> getAllMovies(){
+        return ResponseEntity.ok(movieService.getAllMovies());
+    }
+
+
 }
