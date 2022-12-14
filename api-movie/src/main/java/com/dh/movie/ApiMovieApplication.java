@@ -12,10 +12,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
+//@EnableFeignClients
+//@EnableDiscoveryClient
+//@EnableRabbit
+@EnableJpaRepositories
 @SpringBootApplication
-@EnableFeignClients
-@EnableDiscoveryClient
-@EnableRabbit
 public class ApiMovieApplication {
 
     public static void main(String[] args) {

@@ -18,7 +18,7 @@ public class MovieEntityDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
+
     private String movieId;
 
     private String name;

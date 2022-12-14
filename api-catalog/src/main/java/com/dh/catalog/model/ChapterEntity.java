@@ -4,11 +4,12 @@ import org.springframework.data.annotation.Id;
 
 import java.io.Serial;
 import java.io.Serializable;
+
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
 public class ChapterEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

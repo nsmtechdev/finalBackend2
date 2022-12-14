@@ -30,9 +30,8 @@ public class CatalogService {
         this.movieRepository = movieRepository;
         this.serieRepository = serieRepository;
     }
-
-    @CircuitBreaker(name = "movieFeign", fallbackMethod = "callMovieFeignFallBack")
     @Retry(name = "retryMovieFeign")
+    @CircuitBreaker(name = "movieFeign", fallbackMethod = "callMovieFeignFallBack")
     public List<?> getMovieByGenreOnline(String genre) {
         List response =  movieFeign.getMovieByGenre(genre);
         return response;
@@ -42,9 +41,9 @@ public class CatalogService {
         List response =  movieFeign.getMovieByGenre(genre);
          return response;
     }
-    @CircuitBreaker(name = "seriesFeign", fallbackMethod = "callSeriesFeignFallBack")
     @Retry(name = "retrySeriesFeign")
-    public List<?> getSeriesByGenreOnline(String genre) {
+    @CircuitBreaker(name = "seriesFeign", fallbackMethod = "callSeriesFeignFallBack")
+     public List<?> getSeriesByGenreOnline(String genre) {
         List response =  seriesFeign.getSeriesByGenre(genre);
         return response;
     }
@@ -65,3 +64,4 @@ public class CatalogService {
         List response =  serieRepository.findByGenre(genre);
         return response;}
 }
+//// Comentario pedido!! para mayor resiliencia implmentamos el retry, asi vuelve a intentar la conexion con el MicoServ !

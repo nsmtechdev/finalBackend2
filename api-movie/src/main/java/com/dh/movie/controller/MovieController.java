@@ -19,13 +19,13 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/{genre}")
+    @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) throws Exception {
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
 
-    @PostMapping("/save")
+    @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         return ResponseEntity.ok().body(movieService.save(movie));

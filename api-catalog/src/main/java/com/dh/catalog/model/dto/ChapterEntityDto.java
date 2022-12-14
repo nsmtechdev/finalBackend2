@@ -13,7 +13,7 @@ public class ChapterEntityDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Integer chapterId;
+    private String chapterId;
 
     private String name;
 

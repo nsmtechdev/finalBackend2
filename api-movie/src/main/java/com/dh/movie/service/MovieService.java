@@ -18,7 +18,7 @@ public class MovieService {
     private final MovieRepository movieRepository;
     private final NewMovieEventProducer newMovieEventProducer;
 
-    public MovieService(MovieRepository movieRepository,NewMovieEventProducer newMovieEventProducer) {
+    public MovieService(MovieRepository movieRepository, NewMovieEventProducer newMovieEventProducer) {
         this.movieRepository = movieRepository;
         this.newMovieEventProducer = newMovieEventProducer;
     }
@@ -31,8 +31,8 @@ public class MovieService {
         log.info("Guardando" + movie.getName());
          movieRepository.save(movie);
         newMovieEventProducer.execute(movie);
-        return movie;
-    }
+         return movie;
+        }
 
     public List<Movie> getAllMovies(){
         log.info("Todas las Peliculas");

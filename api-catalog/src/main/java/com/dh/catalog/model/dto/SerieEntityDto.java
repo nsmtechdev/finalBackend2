@@ -7,18 +7,17 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
 public class SerieEntityDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
+
     private String serieId;
 
     private String name;

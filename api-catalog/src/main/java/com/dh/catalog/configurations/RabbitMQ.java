@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQ {
 
 
-    public static final String EXCHANGE_NAME = "sMExchange";
+    public static final String EXCHANGE_NAME = "smExchange";
 
     public static final String TOPIC_NEW_MOVIE = "com.dh.newMovie";
 

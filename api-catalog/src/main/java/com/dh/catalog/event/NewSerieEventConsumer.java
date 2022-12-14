@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
 @Component
-public class NewSerieEventConsumer {
+public class    NewSerieEventConsumer {
     private final SeriesRepository seriesRepository;
 
     public NewSerieEventConsumer(SeriesRepository seriesRepository) {
