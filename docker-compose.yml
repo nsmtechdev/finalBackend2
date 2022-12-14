@@ -1,5 +1,6 @@
 version: '3.9'
 services:
+
   mysql-contenedor:
     image: mysql:8.0
     container_name: mysql-contenedor
@@ -19,6 +20,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
   mongocontenedor:
     image: mongo
     container_name: mongocontenedor-series
@@ -42,7 +44,7 @@ services:
        MONGO_INITDB_ROOT_USERNAME: 'user-catalogo-mongo'
        MONGO_INITDB_ROOT_PASSWORD: 'password-catalogo-mongo'
       ports:
-          - 27017:27017
+          - 27017:27018
       expose:
             - 27017
       volumes:
