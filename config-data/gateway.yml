@@ -35,8 +35,8 @@ spring:
           filters:
             - name: circuitBreaker
               args:
-              name: api-series
-              fallbackUri: forward:/fallback/series
+                name: api-series
+                fallbackUri: forward:/fallback/series
 info:
   app:
     name: ${spring.application.name}

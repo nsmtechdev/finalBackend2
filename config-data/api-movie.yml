@@ -12,6 +12,7 @@ spring:
 
   zipkin:
      base-url: http://zipkin-service:9411/
+      enabled: true
 
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -28,11 +29,16 @@ spring:
   management:
     endpoints:
       web:
-       exposure:
-         include: '*'
+        exposure:
+          include: info
+    info:
+      env:
+        enabled: true
 eureka:
   client:
     registerWithEureka: true
     fetchRegistry: false
     serviceURL:
       defaultZone: http://localhost:8761/eureka
+    instance:
+     instance-id: ${spring.application.name}:${random.int}

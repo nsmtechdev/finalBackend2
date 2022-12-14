@@ -41,3 +41,45 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     instance:
       instance-id: ${spring.application.name}:${random.int}
+
+  resilience4j.circuitbreaker:
+    instances:
+      clientMovie:
+        allowHealthIndicatorToFail: false
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 20
+        waitDurationInOpenState: 50s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      clientSerie:
+        allowHealthIndicatorToFail: false
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 20
+        waitDurationInOpenState: 50s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+
+  resilience4j.retry:
+    instances:
+      clientMovie:
+        maxAttempts: 3
+        waitDuration: 10s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+      clientSerie:
+        maxAttempts: 3
+        waitDuration: 10s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          -org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
