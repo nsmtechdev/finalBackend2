@@ -16,7 +16,7 @@ spring:
   data:
     mongodb:
       database: series-dev-mongo
-      port: 27017
+      port: 27018
       host: localhost
 
   zipkin:
