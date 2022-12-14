@@ -26,7 +26,7 @@ public class NewMovieEventProducer {
 
     public void execute(Movie movieNew) {
         NewMovieEventProducer.Data data= new NewMovieEventProducer.Data();
-        BeanUtils.copyProperties(movieNew,data.getMovie());
+        BeanUtils.copyProperties(movieNew, data.getMovie());
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.TOPIC_NEW_MOVIE, data);
     }
 

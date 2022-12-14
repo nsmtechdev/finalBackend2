@@ -1,10 +1,9 @@
 package com.dh.series.controller;
 
 import com.dh.series.model.SerieEntity;
-import com.dh.series.service.SeasonService;
+import com.dh.series.service.SerieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.retry.annotation.CircuitBreaker;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -12,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/v1/series")
 public class SerieController {
 
-    private final SeasonService service;
+    private final SerieService service;
 
-    public SerieController(SeasonService service) {
+    public SerieController(SerieService service) {
         this.service = service;
     }
 
@@ -23,13 +22,13 @@ public class SerieController {
     //@CircuitBreaker(name = "clientMusic", fallbackMethod = "findAllPlaylistFallBack")
     @GetMapping("/{genre}")
     @ResponseStatus(code = HttpStatus.OK)
-    private ResponseEntity<List<SerieEntity>> getByGenre(@PathVariable String genre){
+    public ResponseEntity<List<SerieEntity>> getByGenre(@PathVariable String genre){
         return ResponseEntity.ok(service.getByGenre(genre));
     }
 
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
-    private SerieEntity postSeries(@RequestBody SerieEntity serieEntity){
+    public SerieEntity postSeries(@RequestBody SerieEntity serieEntity){
         return service.save(serieEntity);
     }
 

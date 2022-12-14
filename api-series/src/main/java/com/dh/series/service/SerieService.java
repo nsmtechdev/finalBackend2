@@ -3,17 +3,18 @@ package com.dh.series.service;
 import com.dh.series.events.NewSerieEventProducer;
 import com.dh.series.model.SerieEntity;
 
+
 import com.dh.series.repository.SerieRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SeasonService  {
+public class SerieService {
 
     private final SerieRepository serieRepository;
     private final NewSerieEventProducer newSerieEventProducer;
 
-    public SeasonService(SerieRepository serieRepository, NewSerieEventProducer newSerieEventProducer) {
+    public SerieService(SerieRepository serieRepository, NewSerieEventProducer newSerieEventProducer) {
         this.serieRepository = serieRepository;
         this.newSerieEventProducer = newSerieEventProducer;
     }
@@ -25,8 +26,4 @@ public class SeasonService  {
         newSerieEventProducer.execute(serie);
         return serieRepository.save(serie);
     }
-
-
-
-
 }

@@ -1,70 +1,86 @@
 package com.dh.series.events;
 
 import com.dh.series.config.RabbitMQConfig;
-import com.dh.series.model.SeasonEntity;
+
 import com.dh.series.model.SerieEntity;
-import com.dh.series.model.dto.SeasonDto;
-import com.dh.series.model.dto.SerieDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
+@Slf4j
 public class NewSerieEventProducer {
 
     private final RabbitTemplate rabbitTemplate;
 
-    public NewSerieEventProducer(RabbitTemplate rabbitTemplate) {
+    public NewSerieEventProducer(RabbitTemplate rabbitTemplate)  {
         this.rabbitTemplate = rabbitTemplate;
     }
-    public void execute(SerieEntity serieEntity) {
-        NewSerieEventProducer.Data data = new NewSerieEventProducer.Data();
-        BeanUtils.copyProperties(serieEntity, data.getSerie());
-        if (data.getSerie() != null ) {
-            BeanUtils.copyProperties(data.getSerie();
-        }
-        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.TOPIC_NEW_SERIES, data);
-    }
 
+
+    public void execute(SerieEntity serieEntityNew) {
+        NewSerieEventProducer.Data data = new NewSerieEventProducer.Data();
+        BeanUtils.copyProperties(serieEntityNew, data.getSerieEntity());
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.TOPIC_NEW_SERIES, data);}
 
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Data implements Serializable {
-
         @Serial
         private static final long serialVersionUID = 1L;
-        private SerieDto serie = new SerieDto();
+        private Data.SerieEntityDto serieEntity = new Data.SerieEntityDto();
+
+
+        @Getter
+         @Setter
+         @NoArgsConstructor
+         @AllArgsConstructor
+          public static class SerieEntityDto implements Serializable {
+            @Serial
+            private static final long serialVersionUID = 1L;
+            private String serieId;
+
+        private String name;
+
+        private String genre;
+        private List<SeasonDTO> seasons;}
 
         @Getter
         @Setter
         @NoArgsConstructor
         @AllArgsConstructor
-        public static class SerieDto implements Serializable {
+        public static class SeasonDTO implements Serializable {
             @Serial
-            private Integer serieId;
+            private static final long serialVersionUID = 1L;
+            private Long seasonId;
+            private Integer seasonNumber;
+            private List<ChapterDTO> chapters;}
 
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class ChapterDTO implements Serializable {
+            @Serial
+            private static final long serialVersionUID = 1L;
+            private Long chapterId;
             private String name;
-
-            private String genre;
-
-            private List<SeasonEntity> seasonsEntities = new ArrayList<>();
-
-
-        }
-
-    }
+            private Integer chapterNumber;
+            private String urlStream;}
 
 
 
-}
+}}
