@@ -8,13 +8,12 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@NoArgsConstructor
-@AllArgsConstructor
 @Service
 public class CatalogService {
 
@@ -24,17 +23,6 @@ public class CatalogService {
     private final MovieRepository movieRepository;
     private final SeriesRepository serieRepository;
 
-    
-
-    public CatalogService(MovieRepository movieRepository, SeriesRepository serieRepository) {
-        this.movieRepository = movieRepository;
-        this.serieRepository = serieRepository;}
-
-
-    public CatalogService(MovieFeign movieFeign, SeriesFeign seriesFeign) {
-        this.movieFeign = movieFeign;
-        this.seriesFeign = seriesFeign;
-    }
 
     public CatalogService(MovieFeign movieFeign, SeriesFeign seriesFeign, MovieRepository movieRepository, SeriesRepository serieRepository) {
         this.movieFeign = movieFeign;
@@ -45,9 +33,9 @@ public class CatalogService {
 
     @CircuitBreaker(name = "movieFeign", fallbackMethod = "callMovieFeignFallBack")
     @Retry(name = "retryMovieFeign")
-    public List<?> getMovieByGenre(String genre) {
-         List response =  movieFeign.getMovieByGenre(genre);
-         return response;
+    public List<?> getMovieByGenreOnline(String genre) {
+        List response =  movieFeign.getMovieByGenre(genre);
+        return response;
     }
 
     public List<?> callMovieFeignFallBack(String genre, Throwable t) {
@@ -56,7 +44,7 @@ public class CatalogService {
     }
     @CircuitBreaker(name = "seriesFeign", fallbackMethod = "callSeriesFeignFallBack")
     @Retry(name = "retrySeriesFeign")
-    public List<?> getSeriesByGenre(String genre) {
+    public List<?> getSeriesByGenreOnline(String genre) {
         List response =  seriesFeign.getSeriesByGenre(genre);
         return response;
     }

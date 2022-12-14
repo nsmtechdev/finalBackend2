@@ -19,15 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class NewSeriesEventProducer {
+public class NewSerieEventProducer {
 
     private final RabbitTemplate rabbitTemplate;
 
-    public NewSeriesEventProducer(RabbitTemplate rabbitTemplate) {
+    public NewSerieEventProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
     public void execute(SerieEntity serieEntity) {
-        NewSeriesEventProducer.Data data = new NewSeriesEventProducer.Data();
+        NewSerieEventProducer.Data data = new NewSerieEventProducer.Data();
         BeanUtils.copyProperties(serieEntity, data.getSerie());
         if (data.getSerie() != null ) {
             BeanUtils.copyProperties(data.getSerie();

@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-public class SeriesEntityDto implements Serializable {
+public class SerieEntityDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-@Data
 @Document(collection = "Serie")
 public class SerieEntity implements Serializable {
 

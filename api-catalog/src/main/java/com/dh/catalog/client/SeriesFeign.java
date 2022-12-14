@@ -1,7 +1,6 @@
 package com.dh.catalog.client;
 //
-import com.dh.catalog.model.dto.SeriesEntityDto;
-import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
+import com.dh.catalog.model.dto.SerieEntityDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +11,6 @@ import java.util.List;
 public interface SeriesFeign {
 
     @GetMapping("/api/v1/series/{genre}")
-    List<SeriesEntityDto> getSeriesByGenre(@PathVariable(value = "genre") String genre);
+    List<SerieEntityDto> getSeriesByGenre(@PathVariable(value = "genre") String genre);
 }
 

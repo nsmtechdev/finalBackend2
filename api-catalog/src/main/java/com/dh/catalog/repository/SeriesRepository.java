@@ -1,11 +1,10 @@
 package com.dh.catalog.repository;
 
-import com.dh.catalog.model.MovieEntity;
-import com.dh.catalog.model.SeriesEntity;
+import com.dh.catalog.model.SerieEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface SeriesRepository extends MongoRepository<SeriesEntity,String> {
-    List<SeriesEntity> findByGenre(String genre);
+public interface SeriesRepository extends MongoRepository<SerieEntity,String> {
+    List<SerieEntity> findByGenre(String genre);
 }

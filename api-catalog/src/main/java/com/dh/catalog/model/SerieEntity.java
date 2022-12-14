@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @ToString
 @Document(collection = "Series")
-public class SeriesEntity implements Serializable {
+public class SerieEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
