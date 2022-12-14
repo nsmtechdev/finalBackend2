@@ -28,7 +28,7 @@ spring:
     endpoints:
       web:
         exposure:
-        include: '*'
+        include: info
   info:
     env:
       enabled: true

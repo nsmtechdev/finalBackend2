@@ -18,8 +18,7 @@ public class SerieController {
     }
 
 
-    //@Retry(name = "retryMusic")
-    //@CircuitBreaker(name = "clientMusic", fallbackMethod = "findAllPlaylistFallBack")
+
     @GetMapping("/{genre}")
     @ResponseStatus(code = HttpStatus.OK)
     public ResponseEntity<List<SerieEntity>> getByGenre(@PathVariable String genre){

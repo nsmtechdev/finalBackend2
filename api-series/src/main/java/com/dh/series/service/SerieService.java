@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SerieService {
+public class  SerieService {
 
     private final SerieRepository serieRepository;
     private final NewSerieEventProducer newSerieEventProducer;

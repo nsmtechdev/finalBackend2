@@ -23,9 +23,9 @@ public class DhTest extends BaseAPI {/*
         given().
                 contentType(ContentType.JSON).
                 body(
-                        new MusicRequest(158L, "Nombre", "Cantante", 1000)
+                        new MusicRequest(158L, "Nombre", "accion", abc)
                 ).
-                when().post("/api/v1/musics");
+                when().post("/api/v1/movie");
 
         given().
                 contentType(ContentType.JSON).

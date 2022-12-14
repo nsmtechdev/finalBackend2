@@ -18,8 +18,9 @@ import java.io.Serializable;
 import java.util.List;
 
 
+
+
 @Component
-@Slf4j
 public class NewSerieEventProducer {
 
     private final RabbitTemplate rabbitTemplate;

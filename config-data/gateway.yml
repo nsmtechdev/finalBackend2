@@ -14,29 +14,15 @@ spring:
           uri: lb://api-catalog
           predicates:
             - Path=/api/v1/catalog/**
-            filters:
-               - name: circuitBreaker
-                 args:
-                  name: api-catalog
-                  fallbackUri: forward:/fallback/catalog
         - id: msmovies
           uri: lb://api-movie
           predicates:
             - Path=/api/v1/movies/**
-          filters:
-            - name: circuitBreaker
-              args:
-                name: api-movie
-                fallbackUri: forward:/fallback/movie
         - id: msseries
           uri: lb://api-series
           predicates:
             - Path=/api/v1/series/**
-          filters:
-            - name: circuitBreaker
-              args:
-                name: api-series
-                fallbackUri: forward:/fallback/series
+
 info:
   app:
     name: ${spring.application.name}
